@@ -11,6 +11,7 @@ interface Patient {
     operationComments?: string,
     chemotherapyComments?: string,
     operationDate?: string,
+    additionalDiagnosis?: string,
     m?: string,
     n?: string,
     t?: string,

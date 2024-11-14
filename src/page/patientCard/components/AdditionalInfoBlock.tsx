@@ -106,6 +106,15 @@ function AdditionaInfolBlock({ patient }: Props) {
             });
         }
         setPatientDiagnosisGenes(copyGenes);
+        calcAdditionalDiagnosis();
+    }
+
+    const calcAdditionalDiagnosis = () => {
+        // if (diagnosisId === 45) {
+        //     console.log("Calculating...");
+        //     let calcValue = 'None';
+        //     setChangePatient(prevData => ({ ...prevData, ['additionalDiagnosis']: calcValue }));
+        // }
     }
 
     const handleSubmit = async (event: FormEvent) => {
@@ -134,9 +143,9 @@ function AdditionaInfolBlock({ patient }: Props) {
         <>
             <div className="border border-secondary rounded-3 text-secondary p-3 clearfix">
                 <form onSubmit={handleSubmit} className="container-fluid">
-                    <div className="row">
-                        <label htmlFor="lastNameArea" className="col fw-bold">Фамилия</label>
-                        <input className="col"
+                    <div className="mb-2 d-flex justify-content-between">
+                        <label htmlFor="lastNameArea" className="fw-bold">Фамилия:</label>
+                        <input className="w-50"
                             id="lastNameArea"
                             name="lastname"
                             value={changePatient.lastname ?? ""}
@@ -144,9 +153,9 @@ function AdditionaInfolBlock({ patient }: Props) {
                             disabled={!editMode}
                         />
                     </div>
-                    <div className="row mt-2">
-                        <label htmlFor="nameArea" className="col fw-bold">Имя</label>
-                        <input className="col"
+                    <div className="mb-2 d-flex justify-content-between">
+                        <label htmlFor="nameArea" className="fw-bold">Имя:</label>
+                        <input className="w-50"
                             id="nameArea"
                             name="name"
                             value={changePatient.name ?? ""}
@@ -154,9 +163,9 @@ function AdditionaInfolBlock({ patient }: Props) {
                             disabled={!editMode}
                         />
                     </div>
-                    <div className="row mt-2">
-                        <label htmlFor="patronymicArea" className="col fw-bold">Отчество</label>
-                        <input className="col"
+                    <div className="mb-2 d-flex justify-content-between">
+                        <label htmlFor="patronymicArea" className="fw-bold">Отчество:</label>
+                        <input className="w-50"
                             id="patronymicArea"
                             name="patronymic"
                             value={changePatient.patronymic ?? ""}
@@ -164,9 +173,9 @@ function AdditionaInfolBlock({ patient }: Props) {
                             disabled={!editMode}
                         />
                     </div>
-                    <div className="row mt-2">
-                        <label htmlFor="birthDateArea" className="col fw-bold">Дата рождения</label>
-                        <input className="col"
+                    <div className="mb-2 d-flex justify-content-between">
+                        <label htmlFor="birthDateArea" className="fw-bold">Дата рождения:</label>
+                        <input className="w-50"
                             type="date"
                             min='1900-01-01'
                             max='2199-12-12'
@@ -246,11 +255,24 @@ function AdditionaInfolBlock({ patient }: Props) {
                         genesList={diagnosisGenes}
                         patientGenes={patientDiagnosisGenes}
                         isEditMode={editMode}
-
                         onChange={handleGeneChange} />
 
+                    {/* Applied only for C-50 */}
+                    {diagnosisId === 45 &&
+                        <div className="mb-2 d-flex justify-content-between">
+                            <label htmlFor="additionalDiagArea" className="fw-bold">Доп диагноз:</label>
+                            <input className="w-50"
+                                id="additionalDiagArea"
+                                name="additionalDiagnosis"
+                                value={changePatient.additionalDiagnosis ?? ""}
+                                onChange={handleChange}
+                                disabled={!editMode}
+                            />
+                        </div>
+                    }
+
                     <div className="mb-3">
-                        <label htmlFor="operationDate" className="fw-bold">Дата операции:</label>
+                        <label htmlFor="operationDateArea" className="fw-bold">Дата операции:</label>
                         <div className="mt-2">
                             <input className="w-100"
                                 type="date"
