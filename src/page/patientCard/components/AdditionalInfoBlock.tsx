@@ -202,45 +202,24 @@ function AdditionaInfolBlock({ patient }: Props) {
 
                     </div>
 
-                    <div className="mb-3 d-flex">
+                    <div className="mb-3">
+                        <MultiSelectList
+                            label="N:"
+                            options={["0", "X", "1", "2", "3", "a", "b"]}
+                            value={changePatient.n ?? ""}
+                            onChange={(newValue) => setChangePatient(prevData => ({ ...prevData, n: newValue }))}
+                            disabled={!editMode}
+                        />
+                    </div>
 
-                        <div>
-                            <label htmlFor="NArea"
-                                style={{width: '20px'}}
-                                className="fw-bold me-3">N:</label>
-                            <select
-                                id="NArea"
-                                disabled={!editMode}
-                                name="n"
-                                value={changePatient.n ?? ""}
-                                onChange={handleChange}>
-                                <option value="">-</option>
-                                <option value="0">0</option>
-                                <option value="X">Х</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label htmlFor="GArea"
-                                style={{width: '20px'}}
-                                className="fw-bold mx-3">G:</label>
-                            <select
-                                id="GArea"
-                                disabled={!editMode}
-                                name="g"
-                                value={changePatient.g ?? ""}
-                                onChange={handleChange}>
-                                <option value="">-</option>
-                                <option value="X">Х</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-
+                    <div className="mb-3">
+                        <MultiSelectList
+                            label="G:"
+                            options={["X", "1", "2", "3", "Adc", "Squam CC", "Small CC"]}
+                            value={changePatient.g ?? ""}
+                            onChange={(newValue) => setChangePatient(prevData => ({ ...prevData, g: newValue }))}
+                            disabled={!editMode}
+                        />
                     </div>
 
                     <div className="mb-3">
